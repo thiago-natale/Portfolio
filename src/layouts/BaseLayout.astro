@@ -6,6 +6,8 @@ import PreloaderBootstrap from '../components/sections/Preloader/PreloaderBootst
 import Header from '../components/sections/Header/Header.astro';
 import Seo from '../components/ui/Seo.astro';
 import ResumeViewer from '../components/sections/Resume/ResumeViewer.astro';
+import  Analytics  from '@vercel/analytics/astro';
+
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -14,6 +16,7 @@ import ResumeViewer from '../components/sections/Resume/ResumeViewer.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080808" />
     <Seo />
+    <Analytics/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=filled" />
     <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="generator" content={Astro.generator} />
