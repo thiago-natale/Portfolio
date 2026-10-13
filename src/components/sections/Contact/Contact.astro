@@ -1,7 +1,5 @@
 ---
 import { portfolio } from '../../../data/portfolio';
-import StarIcon from '../../ui/StarIcon.astro';
-import Icon from '../../ui/Icon.astro';
 import ContactLink from '../../ui/ContactLink.astro';
 import StrokeRing from '../../ui/StrokeRing.astro';
 import './contact.css';
@@ -9,8 +7,9 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 // Computed during rendering/build; a new capture receives a fresh browser cache key.
-const screenVersion = createHash('sha256').update(await readFile(join(process.cwd(), 'public', portfolio.assets.notebookScreen))).digest('hex').slice(0, 12);
-const notebookScreen = `${portfolio.assets.notebookScreen}?v=${screenVersion}`;
+const mockupPath = '/images/notebook-portfolio.webp';
+const mockupVersion = createHash('sha256').update(await readFile(join(process.cwd(), 'public', mockupPath))).digest('hex').slice(0, 12);
+const notebookMockup = `${mockupPath}?v=${mockupVersion}`;
 ---
 <section id="contato" class="contact relative grid overflow-hidden" aria-labelledby="contact-title">
   <div class="contact__introduction relative">
@@ -32,16 +31,7 @@ const notebookScreen = `${portfolio.assets.notebookScreen}?v=${screenVersion}`;
     <ContactLink icon="pin" label={portfolio.location} />
   </address>
   <div class="contact__visual relative" role="img" aria-label="Notebook preto com o portfólio de Thiago Natale na tela e uma caneca escura ao lado.">
-    <svg class="contact__notebook" viewBox="0 0 1536 1024" aria-hidden="true" focusable="false">
-      <foreignObject width="1536" height="1024">
-        <img src={portfolio.assets.notebook} alt="" width="1536" height="1024" loading="lazy" decoding="async" style="width:100%;height:100%" />
-      </foreignObject>
-      <!-- Perspective projects a real page screenshot onto the unmodified photo. -->
-      <foreignObject width="1536" height="1024">
-        <div class="contact__screen-plane">
-          <img src={notebookScreen} alt="" width="1000" height="640" loading="lazy" decoding="async" class="contact__screen-image" />
-        </div>
-      </foreignObject>
-    </svg>
+    <!-- Perspective is baked into the asset to avoid foreignObject compositing on iOS. -->
+    <img class="contact__notebook" src={notebookMockup} alt="" width="1536" height="1024" loading="lazy" decoding="async" />
   </div>
 </section>

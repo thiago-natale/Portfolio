@@ -1,5 +1,6 @@
 ---
 import { portfolio } from '../../../data/portfolio';
+import lettering from '../../../data/hero-lettering.json';
 import StarIcon from '../../ui/StarIcon.astro';
 import Icon from '../../ui/Icon.astro';
 import Stat from '../../ui/Stat.astro';
@@ -18,7 +19,8 @@ import './hero.css';
         <stop offset="100%" stop-color="#220508" />
       </linearGradient>
     </defs>
-    <text x="0" y="323" textLength="690" lengthAdjust="spacingAndGlyphs" fill="url(#portfolio-red)" clip-path="url(#portfolio-shutters)">PORTFOLIO</text>
+    <!-- Anton outlines keep the same proportions without SVG text layout differences. -->
+    <path d={lettering.path} fill="url(#portfolio-red)" clip-path="url(#portfolio-shutters)" />
   </svg>
   <figure class="hero__portrait absolute">
     <img src={portfolio.assets.portrait.src} alt="Retrato de Thiago Natale."
