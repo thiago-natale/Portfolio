@@ -1,0 +1,30 @@
+---
+import { portfolio } from '../../../data/portfolio';
+import './resume-viewer.css';
+const { resume } = portfolio;
+---
+<dialog id="resume-viewer" class="resume-viewer" aria-labelledby="resume-viewer-title" data-pdf-url={resume.file}>
+  <div class="resume-viewer__surface">
+    <header class="resume-viewer__header flex items-center justify-between">
+      <div><p class="resume-viewer__label">{resume.label}</p><h2 id="resume-viewer-title">{portfolio.name}</h2></div>
+      <div class="resume-viewer__header-actions flex items-center">
+        <a href={resume.file} download={resume.filename}>{resume.download}</a>
+        <button class="resume-viewer__close flex items-center" type="button" autofocus><span>FECHAR</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" /></svg></button>
+      </div>
+    </header>
+    <div class="resume-viewer__toolbar flex items-center justify-between" aria-label="Controles do documento">
+      <p class="resume-viewer__page-count" aria-live="polite"></p>
+      <div class="resume-viewer__zoom flex items-center">
+        <button type="button" data-pdf-control="out" aria-label="Diminuir zoom" disabled>−</button>
+        <output class="resume-viewer__scale" aria-label="Zoom atual">—</output>
+        <button type="button" data-pdf-control="in" aria-label="Aumentar zoom" disabled>+</button>
+        <button type="button" data-pdf-control="fit" disabled>AJUSTAR</button>
+      </div>
+    </div>
+    <div class="resume-viewer__body">
+      <p class="resume-viewer__status" role="status" aria-live="polite"></p>
+      <div class="resume-viewer__viewport" tabindex="0" role="region" aria-label="Páginas do currículo" aria-busy="true"><div class="pdfViewer"></div></div>
+    </div>
+    <footer class="resume-viewer__footer"><span>Leitura do documento original.</span><a href={resume.file} target="_blank" rel="noopener">ABRIR PDF EM OUTRA ABA ↗</a></footer>
+  </div>
+</dialog>

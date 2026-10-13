@@ -1,0 +1,17 @@
+---
+import BrandMark from '../../ui/BrandMark.astro';
+import { portfolio } from '../../../data/portfolio';
+import './preloader.css';
+---
+<div class="preloader" aria-hidden="true" data-stage="pending" data-ready-label={portfolio.preloader.ready}>
+  <div class="preloader__curtain preloader__curtain--left" aria-hidden="true"></div>
+  <div class="preloader__curtain preloader__curtain--right" aria-hidden="true"></div>
+  <div class="preloader__composition">
+    <div class="preloader__mark">
+      <BrandMark class="preloader__outline" />
+      <BrandMark class="preloader__ink" />
+    </div>
+    <p class="preloader__status" role="status" aria-live="polite" aria-atomic="true">{portfolio.preloader.preparing}</p>
+  </div>
+  <button class="preloader__skip" type="button">{portfolio.preloader.skip} <span aria-hidden="true">↗</span></button>
+</div>

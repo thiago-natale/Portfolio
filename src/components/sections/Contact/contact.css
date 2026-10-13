@@ -1,0 +1,27 @@
+.contact { min-height: max(216px, calc(216 * var(--u))); padding-left: var(--gutter); grid-template-columns: calc(211 * var(--u)) calc(188 * var(--u)) 1fr; }
+.contact__introduction { z-index: 2; padding-top: calc(22 * var(--u)); }
+.contact__heading h2 { font-size: calc(19.5 * var(--u)); line-height: 1.4; font-weight: 600; letter-spacing: -.035em; }
+.contact__heading h2 span { white-space: nowrap; }
+.contact__star { width: calc(15 * var(--u)); height: calc(15 * var(--u)); color: var(--color-accent); left: calc(172 * var(--u)); top: calc(26 * var(--u)); }
+.contact__description { color: var(--color-muted); font-size: max(10px, calc(9.2 * var(--u))); line-height: 1.45; width: calc(175 * var(--u)); margin-top: calc(10 * var(--u)); }
+.contact__cta { margin-top: calc(14 * var(--u)); gap: calc(9 * var(--u)); color: var(--color-accent-text); font-size: max(10px, calc(7.5 * var(--u))); font-weight: 600; min-height: 44px; }
+.contact__cta-icon { position: relative; width: calc(25 * var(--u)); height: calc(25 * var(--u)); color: #92202b; }
+.contact__cta-icon .contact__cta-glyph { width: calc(17 * var(--u)); height: calc(17 * var(--u)); color: var(--color-accent-text); }
+.contact__links { padding-block: calc(20 * var(--u)) calc(16 * var(--u)); z-index: 2; }
+.contact__visual { min-width: 0; width: calc(344 * var(--u)); height: calc(229.33 * var(--u)); margin-left: calc(-30 * var(--u)); align-self: end; margin-bottom: calc(-4 * var(--u)); }
+.contact__notebook { width: 100%; height: 100%; mask-image: linear-gradient(90deg, transparent 0%, #000 14%); }
+.contact__screen-plane { width: 1000px; height: 640px; transform-origin: 0 0; transform: matrix3d(.805023318, .01943848, 0, -.000084615, -.123096069, .823331722, 0, -.000035169, 0, 0, 1, 0, 547, 84, 0, 1); }
+.contact__screen-image { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: brightness(.58); }
+@media (max-width: 599px) {
+  .contact { height: auto; display: flex; flex-direction: column; padding: 31px var(--gutter) 0; }
+  .contact__introduction { padding: 0; }
+  .contact__heading h2 { font-size: 29px; line-height: 1.2; }
+  .contact__star { width: 17px; height: 17px; top: 29px; left: 236px; }
+  .contact__description { width: 270px; max-width: 100%; font-size: 13px; margin-top: 17px; }
+  .contact__cta { margin-top: 20px; min-height: 44px; gap: 11px; font-size: 10px; }
+  .contact__cta-icon { width: 29px; height: 29px; }
+  .contact__cta-icon .contact__cta-glyph { width: 18px; height: 18px; }
+  .contact__links { padding: 20px 0 0; }
+  .contact__visual { width: calc(100% + 2 * var(--gutter)); height: auto; aspect-ratio: 1.5; margin: 18px calc(-1 * var(--gutter)) 0; align-self: auto; }
+  .contact__notebook { mask-image: none; }
+}

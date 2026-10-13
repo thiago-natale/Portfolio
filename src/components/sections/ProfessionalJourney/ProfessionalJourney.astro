@@ -1,0 +1,24 @@
+---
+import { portfolio } from '../../../data/portfolio';
+import CareerEntry from '../../ui/CareerEntry.astro';
+import './professional-journey.css';
+const journey = portfolio.professionalJourney;
+---
+<section id="trajetoria" class="professional-journey" aria-labelledby="journey-title">
+  <header class="professional-journey__heading flex items-center">
+    <h2 id="journey-title" class="section-title shrink-0">{journey.heading}</h2>
+    <span class="professional-journey__rule grow" aria-hidden="true"></span>
+    <p class="professional-journey__eyebrow uppercase">{journey.eyebrow}</p>
+  </header>
+  <p class="professional-journey__introduction">{journey.introduction}</p>
+  <div class="professional-journey__track relative">
+    <svg class="career-entry__route absolute pointer-events-none" viewBox="0 0 40 100" width="40" height="100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="career-entry__route-base" d="M20 0V100" />
+      <path class="career-entry__route-progress" d="M20 0V100" />
+      <rect class="career-entry__signal" x="-2" y="-2" width="4" height="4" />
+    </svg>
+    <ol class="professional-journey__entries" role="list">
+      {journey.experiences.map(experience => <CareerEntry experience={experience} />)}
+    </ol>
+  </div>
+</section>

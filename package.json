@@ -1,0 +1,28 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "prebuild": "node scripts/sync-pdfjs-assets.mjs",
+    "preview": "astro preview",
+    "brand:sync": "node scripts/sync-brand.mjs",
+    "pdf:sync": "node scripts/sync-pdfjs-assets.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.7",
+    "gsap": "^3.15.0",
+    "pdfjs-dist": "^6.4.299",
+    "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import { portfolio } from '../data/portfolio';
+import Preloader from '../components/sections/Preloader/Preloader.astro';
+import PreloaderBootstrap from '../components/sections/Preloader/PreloaderBootstrap.astro';
+import Header from '../components/sections/Header/Header.astro';
+import Seo from '../components/ui/Seo.astro';
+import ResumeViewer from '../components/sections/Resume/ResumeViewer.astro';
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080808" />
+    <Seo />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=filled" />
+    <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="generator" content={Astro.generator} />
+    <PreloaderBootstrap />
+  </head>
+  <body>
+    <Preloader />
+    <a class="skip-link" href="#conteudo">{portfolio.accessibility.skip}</a>
+    <Header />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main id="conteudo" tabindex="-1" class="portfolio mx-auto"><slot /></main>
+      </div>
+    </div>
+    <ResumeViewer />
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

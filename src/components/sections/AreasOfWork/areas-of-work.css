@@ -1,0 +1,24 @@
+.areas-of-work {
+  padding: calc(21 * var(--u)) var(--gutter) calc(12 * var(--u));
+  border-bottom: 1px solid var(--color-line);
+}
+.areas-of-work__heading {
+  gap: calc(19 * var(--u));
+  margin-bottom: calc(14 * var(--u));
+}
+.areas-of-work__rule {
+  height: 1px;
+  background: var(--color-line);
+}
+.areas-of-work__eyebrow {
+  color: var(--color-muted);
+  font-size: calc(7 * var(--u));
+  line-height: 1.4;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+@media (max-width: 599px) {
+  .areas-of-work { padding: 28px var(--gutter) 10px; }
+  .areas-of-work__heading { gap: 18px; margin-bottom: 20px; }
+  .areas-of-work__eyebrow { display: none; }
+}

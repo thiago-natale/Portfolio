@@ -1,0 +1,26 @@
+.preloader { display: none; position: fixed; inset: 0; z-index: 200; isolation: isolate; color: var(--color-brand); }
+html[data-preloader="pending"] .preloader, html[data-preloader="exiting"] .preloader { display: grid; place-items: center; }
+html[data-preloader="pending"] { overflow: hidden; }
+html[data-preloader="pending"] main.portfolio { visibility: hidden; }
+html[data-preloader="pending"] .skip-link { visibility: hidden; }
+.preloader__curtain { position: absolute; inset: 0; background: var(--color-page); z-index: -1; }
+.preloader__curtain--left { clip-path: polygon(0 0, 68.1% 0, 42.1% 100%, 0 100%); }
+.preloader__curtain--right { clip-path: polygon(68% 0, 100% 0, 100% 100%, 42% 100%); }
+.preloader__composition { text-align: center; }
+.preloader__mark { position: relative; width: clamp(156px, 17vw, 220px); aspect-ratio: 762 / 496; opacity: 0; visibility: hidden; }
+.preloader__outline, .preloader__ink { width: 100%; height: 100%; }
+.preloader__ink { position: absolute; inset: 0; stroke: none; fill: currentColor; opacity: 0; }
+.preloader__status { margin-top: 28px; font-size: 9px; line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted); }
+.preloader__skip { position: absolute; bottom: 28px; right: 28px; padding: 12px 0 12px 12px; color: var(--color-muted); font-size: 9px; letter-spacing: .05em; cursor: pointer; min-height: 44px; }
+.preloader__skip span { color: var(--color-brand); margin-left: 12px; }
+.preloader__skip:is(:hover, :focus-visible) { color: var(--color-text); }
+.preloader__skip:focus-visible { outline: 1px solid var(--color-text); outline-offset: 5px; }
+@media (max-width: 599px) {
+  .preloader__mark { width: min(40vw, 168px); }
+  .preloader__status { font-size: 8px; margin-top: 24px; }
+  .preloader__skip { right: 20px; bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader { display: none !important; }
+  html[data-preloader="pending"] main.portfolio, html[data-preloader="pending"] .skip-link { visibility: visible; }
+}

@@ -1,0 +1,14 @@
+---
+import { portfolio } from '../../../data/portfolio';
+import ProjectCard from '../../ui/ProjectCard.astro';
+import Icon from '../../ui/Icon.astro';
+import './projects.css';
+---
+<section id="projetos" class="projects" aria-labelledby="projects-title">
+  <div class="projects__heading flex items-center">
+    <h2 id="projects-title" class="section-title shrink-0">PROJETOS SELECIONADOS</h2>
+    <span class="projects__rule grow" aria-hidden="true"></span>
+    <a href={portfolio.github} class="projects__all flex shrink-0 items-center uppercase"><span>VER GITHUB</span><Icon name="arrow" /></a>
+  </div>
+  <div class="projects__grid grid grid-cols-3">{portfolio.projects.map((project) => <ProjectCard project={project} />)}</div>
+</section>

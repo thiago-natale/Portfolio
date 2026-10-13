@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@font-face { font-family: 'Anton'; src: url('/fonts/anton.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url('/fonts/barlow-condensed.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Mrs Saint Delafield'; src: url('/fonts/mrs-saint-delafield.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
+@theme {
+  --color-page: #080808;
+  --color-surface: #0c0c0c;
+  --color-text: #f1f0ed;
+  --color-muted: #a0a0a0;
+  --color-accent: #bf0714;
+  --color-brand: #d82520;
+  --color-accent-text: #e23845;
+  --color-line: #50202855;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-narrow: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-script: 'Mrs Saint Delafield', cursive;
+}
+
+@layer base {
+  html { background: var(--color-page); color: var(--color-text); font-family: var(--font-body); scroll-behavior: auto; color-scheme: dark; }
+  body { margin: 0; min-width: 320px; }
+  #smooth-content { width: 100%; }
+  a { text-decoration: none; transition: color 180ms ease; }
+  a:hover { color: var(--color-text); }
+  a:focus-visible { outline: 2px solid var(--color-text); outline-offset: 5px; }
+  ::selection { color: var(--color-text); background: #8c0711; }
+}
+
+@layer components {
+  .portfolio { width: 100%; max-width: 1440px; container-type: inline-size; }
+  .portfolio > section, .portfolio > .pin-spacer > section { --u: calc(100cqw / 736); --gutter: calc(23 * var(--u)); }
+  .section-title { font-size: calc(15 * var(--u)); font-weight: 500; line-height: 1.2; letter-spacing: -.03em; }
+  .skip-link { position: fixed; top: 12px; left: 12px; padding: 12px 18px; z-index: 100; color: var(--color-text); background: #58070c; transform: translateY(-160%); }
+  .skip-link:focus { transform: translateY(0); }
+}
+
+@media (max-width: 599px) {
+  .portfolio > section, .portfolio > .pin-spacer > section { --gutter: 20px; }
+  .section-title { font-size: 16px; letter-spacing: -.035em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

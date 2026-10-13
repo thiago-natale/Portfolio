@@ -1,0 +1,8 @@
+---
+import brand from '../../data/brand.json';
+interface Props { class?: string; filled?: boolean }
+const { class: className = '', filled = false } = Astro.props;
+---
+<svg class={`brand-mark ${className}`} viewBox={brand.viewBox} fill={filled ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="5.5" stroke-linejoin="miter" aria-hidden="true" focusable="false">
+  {brand.paths.map((part) => <path data-brand-part={part.id} d={part.d} />)}
+</svg>

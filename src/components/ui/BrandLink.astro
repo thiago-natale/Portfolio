@@ -1,0 +1,11 @@
+---
+import BrandMark from './BrandMark.astro';
+import { portfolio } from '../../data/portfolio';
+---
+<a class="brand-link flex items-center" href={portfolio.header.home} aria-label="Thiago Natale — voltar ao início">
+  <BrandMark class="brand-link__mark shrink-0" filled />
+  <span class="brand-link__identity">
+    <span class="brand-link__name block">{portfolio.header.name}</span>
+    <span class="brand-link__subtitle block">{portfolio.header.subtitle}</span>
+  </span>
+</a>

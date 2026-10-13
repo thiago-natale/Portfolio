@@ -1,0 +1,70 @@
+# Dependências e arquivos gerados pelo build
+node_modules/
+/dist/
+/.astro/
+*.tsbuildinfo
+
+# Caches
+.cache/
+.vite/
+
+# Testes, auditorias, capturas e relatórios
+coverage/
+playwright-report/
+test-results/
+/output/
+
+# Scripts locais; preservar a preparação necessária ao build
+/scripts/*
+!/scripts/sync-pdfjs-assets.mjs
+
+# Documentação e materiais internos
+/docs/
+/padrao_projeto_landing_pages.md
+
+# Instruções e configurações locais de assistentes
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.codex/
+/.claude/
+
+# Recursos do PDF.js recriados pelo prebuild
+/public/pdfjs/
+
+# Original não utilizado pelo site
+/src/assets/images/hero-image.png
+
+# Variáveis de ambiente; preservar exemplos de configuração
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Configurações locais de editores
+/.vscode/
+.idea/
+.history/
+*.code-workspace
+
+# Metadados locais de plataformas de deploy
+/.vercel/
+/.netlify/
+
+# Logs, processos e arquivos temporários
+*.log
+*.log.*
+*.pid
+*.pid.lock
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Metadados do sistema operacional
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

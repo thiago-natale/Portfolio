@@ -1,0 +1,42 @@
+.resume-viewer { position: fixed; inset: 0; width: min(1080px, calc(100% - 48px)); height: min(960px, calc(100dvh - 48px)); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid var(--color-line); background: var(--color-page); color: var(--color-text); overflow: hidden; }
+.resume-viewer:not([open]) { display: none; }
+.resume-viewer::backdrop { background: rgb(0 0 0 / .85); }
+.resume-viewer__surface { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; height: 100%; }
+.resume-viewer__header { padding: 14px 24px; gap: 16px; border-bottom: 1px solid var(--color-line); }
+.resume-viewer__label { color: var(--color-accent-text); font-size: 9px; letter-spacing: .1em; margin-bottom: 3px; }
+.resume-viewer__header h2 { font-family: var(--font-display); font-size: 24px; font-weight: 400; }
+.resume-viewer__header-actions { gap: 20px; }
+.resume-viewer__header-actions a { color: var(--color-accent-text); font-size: 11px; min-height: 44px; display: flex; align-items: center; }
+.resume-viewer button { border: 0; background: transparent; color: var(--color-text); cursor: pointer; min-height: 44px; min-width: 44px; font: inherit; font-size: 11px; }
+.resume-viewer button:disabled { opacity: .4; cursor: default; }
+.resume-viewer :is(button, a, [tabindex]):focus-visible { outline: 2px solid var(--color-text); outline-offset: -3px; }
+.resume-viewer__close { gap: 10px; }
+.resume-viewer__toolbar { padding-inline: 24px; border-bottom: 1px solid var(--color-line); gap: 12px; }
+.resume-viewer__page-count { font-size: 11px; color: var(--color-muted); }
+.resume-viewer__zoom { gap: 4px; }
+.resume-viewer__zoom button[data-pdf-control="fit"] { padding-inline: 12px; }
+.resume-viewer__zoom button:not([data-pdf-control="fit"]) { font-size: 22px; }
+.resume-viewer__scale { width: 46px; text-align: center; font-size: 11px; font-variant-numeric: tabular-nums; }
+.resume-viewer__body { position: relative; min-height: 0; background: #151515; }
+.resume-viewer__viewport { position: absolute; inset: 0; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; color-scheme: dark; }
+.resume-viewer__viewport .pdfViewer { padding: 16px 0; }
+.resume-viewer__viewport .pdfViewer .page { color-scheme: light; border: 0; margin-bottom: 16px; }
+.resume-viewer__status { position: absolute; inset: 0; padding: 32px; color: var(--color-muted); font-size: 14px; z-index: 2; background: #151515; }
+.resume-viewer__status:empty { display: none; }
+.resume-viewer__footer { display: flex; justify-content: space-between; gap: 16px; padding: 12px 24px; font-size: 10px; line-height: 1.5; color: var(--color-muted); border-top: 1px solid var(--color-line); }
+.resume-viewer__footer a { color: var(--color-accent-text); }
+@media (max-width: 599px) {
+  .resume-viewer { width: 100%; height: 100dvh; border: 0; }
+  .resume-viewer__header { padding: max(12px, env(safe-area-inset-top)) 16px 12px; gap: 8px; }
+  .resume-viewer__header h2 { font-size: 20px; }
+  .resume-viewer__header-actions { gap: 12px; }
+  .resume-viewer__header-actions a, .resume-viewer button { font-size: 10px; }
+  .resume-viewer__close { gap: 5px; }
+  .resume-viewer__toolbar { padding-inline: 12px; gap: 4px; }
+  .resume-viewer__page-count { font-size: 10px; }
+  .resume-viewer__zoom { gap: 0; }
+  .resume-viewer__zoom button[data-pdf-control="fit"] { padding-inline: 8px; }
+  .resume-viewer__footer { padding: 10px 16px max(10px, env(safe-area-inset-bottom)); font-size: 9px; }
+  .resume-viewer__footer > span { display: none; }
+  .resume-viewer__footer a { display: flex; align-items: center; min-height: 34px; }
+}

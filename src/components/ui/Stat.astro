@@ -1,0 +1,21 @@
+---
+interface Props { value: string; label: string[]; detail: string }
+const { value, label, detail } = Astro.props;
+---
+<div class="stat flex items-center" title={detail}>
+  <dt class="stat__label order-2 uppercase">{label.map((line, index) => <>{index > 0 && ' '}<span class="block">{line}</span></>)}</dt>
+  <dd class="stat__value order-1"><span class="stat__digits" aria-hidden="true">{value}</span><span class="sr-only">{value}. {detail}</span><span class="stat__rule" aria-hidden="true"></span></dd>
+</div>
+<style>
+  .stat { position: relative; min-height: calc(53 * var(--u)); gap: calc(16 * var(--u)); }
+  .stat__rule { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--color-line); }
+  .stat:last-child .stat__rule { display: none; }
+  .stat__value { color: var(--color-accent); font-family: var(--font-narrow); font-size: calc(31 * var(--u)); line-height: 1; margin: 0; }
+  .stat__label { color: var(--color-muted); font-size: calc(7.6 * var(--u)); line-height: 1.4; }
+  @media (max-width: 599px) {
+    .stat { gap: 12px; min-height: 42px; justify-content: center; }
+    .stat__rule { top: 0; bottom: 0; left: auto; right: 0; height: auto; width: 1px; }
+    .stat__value { font-size: 30px; }
+    .stat__label { font-size: 8px; }
+  }
+</style>

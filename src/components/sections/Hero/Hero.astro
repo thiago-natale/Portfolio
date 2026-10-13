@@ -1,0 +1,40 @@
+---
+import { portfolio } from '../../../data/portfolio';
+import StarIcon from '../../ui/StarIcon.astro';
+import Icon from '../../ui/Icon.astro';
+import Stat from '../../ui/Stat.astro';
+import StrokeRing from '../../ui/StrokeRing.astro';
+import './hero.css';
+---
+<section id="inicio" class="hero relative overflow-hidden" aria-labelledby="intro-title">
+  <svg class="hero__lettering absolute" viewBox="0 0 690 330" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="portfolio-shutters">
+        {Array.from({ length: 8 }, (_, i) => <rect class="hero__shutter" x={i * 86.25} y="0" width="86.5" height="330" />)}
+      </clipPath>
+      <linearGradient id="portfolio-red" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="320">
+        <stop offset="0%" stop-color="#c60917" />
+        <stop offset="48%" stop-color="#ad0713" />
+        <stop offset="100%" stop-color="#220508" />
+      </linearGradient>
+    </defs>
+    <text x="0" y="323" textLength="690" lengthAdjust="spacingAndGlyphs" fill="url(#portfolio-red)" clip-path="url(#portfolio-shutters)">PORTFOLIO</text>
+  </svg>
+  <figure class="hero__portrait absolute">
+    <img src={portfolio.assets.portrait.src} alt="Retrato de Thiago Natale."
+      width={portfolio.assets.portrait.width} height={portfolio.assets.portrait.height}
+      loading="eager" fetchpriority="high" decoding="async" />
+  </figure>
+  <div class="hero__introduction absolute">
+    <p class="hero__greeting">{portfolio.hero.greeting}</p>
+    <h1 id="intro-title" class="hero__name" aria-label={portfolio.name}>{portfolio.hero.nameLines.map((line, index) => <>{index > 0 && ' '}<span class="block" aria-hidden="true">{line}</span></>)}</h1>
+    <p class="hero__role uppercase">{portfolio.hero.role.map((line, index) => <>{index > 0 && ' '}<span class="block">{line}</span></>)}</p>
+    <p class="hero__description">{portfolio.hero.introduction}</p>
+    <p class="hero__location flex items-center uppercase"><Icon name="globe" />{portfolio.location}</p>
+  </div>
+  <div class="hero__aside absolute flex items-center">
+    <span class="hero__spark flex shrink-0 items-center justify-center"><StrokeRing /><StarIcon class="hero__star" /></span>
+    <p>{portfolio.hero.aside.map((line, index) => <>{index > 0 && ' '}<span class="block">{line}</span></>)}</p>
+  </div>
+  <dl class="hero__stats absolute">{portfolio.hero.stats.map((stat) => <Stat {...stat} />)}</dl>
+</section>

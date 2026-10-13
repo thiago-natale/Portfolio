@@ -1,0 +1,32 @@
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    // Establish the enhanced header geometry before the first paint.
+    root.dataset.header = 'ready';
+    setTimeout(() => {
+      if (!document.querySelector('.site-header')?.hasAttribute('data-enhanced')) delete root.dataset.header;
+    }, 6000);
+    let reason = 'complete';
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) reason = 'reduced';
+    else if (location.hash) reason = 'anchor';
+    else if (performance.getEntriesByType('navigation')[0]?.type === 'back_forward') reason = 'history';
+    else {
+      try { if (sessionStorage.getItem('thiago-natale:preloader:v1')) reason = 'session'; } catch {}
+    }
+    root.dataset.preloader = reason === 'complete' ? 'pending' : 'released';
+    root.dataset.preloaderReason = reason;
+    if (reason !== 'complete') return;
+    // This rescue is independent of the GSAP bundle and never hides a no-JS page.
+    window.__portfolioPreloaderFallback = setTimeout(() => {
+      if (root.dataset.preloader !== 'pending') return;
+      root.dataset.preloader = 'released';
+      root.dataset.preloaderReason = 'timeout';
+      document.querySelector('main.portfolio')?.removeAttribute('inert');
+      document.querySelector('.skip-link')?.removeAttribute('inert');
+      document.querySelector('.site-header')?.removeAttribute('inert');
+      const loader = document.querySelector('.preloader');
+      if (loader) { loader.hidden = true; loader.setAttribute('aria-hidden', 'true'); }
+      dispatchEvent(new CustomEvent('portfolio:preloader-release', { detail: { reason: 'timeout', animated: false } }));
+    }, 6000);
+  })();
+</script>

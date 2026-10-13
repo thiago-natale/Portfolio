@@ -1,0 +1,17 @@
+---
+import { portfolio } from '../../../data/portfolio';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<nav class:list={['header-navigation', { 'header-navigation--compact': compact }]} aria-label={compact ? 'Navegação do painel' : 'Navegação principal'}>
+  <ul class="header-navigation__list" role="list">
+    {portfolio.header.links.map(link => (
+      <li class="header-navigation__item">
+        <span class="header-navigation__rule" aria-hidden="true"></span>
+        <a class="header-navigation__link" href={link.href} data-header-target={link.href}>
+          <span class="header-navigation__label">{link.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

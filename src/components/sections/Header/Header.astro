@@ -1,0 +1,47 @@
+---
+import { portfolio } from "../../../data/portfolio";
+import BrandLink from "../../ui/BrandLink.astro";
+import HeaderNavigation from "./HeaderNavigation.astro";
+import HeaderMenu from "./HeaderMenu.astro";
+import "./header.css";
+---
+
+<header class="site-header">
+  <div class="site-header__inner flex items-center justify-between">
+    <BrandLink />
+    <HeaderNavigation />
+    <a
+      class="header-contact site-header__contact flex items-center"
+      href={portfolio.header.contact.href}
+      data-header-target={portfolio.header.contact.href}
+    >
+      <span>{portfolio.header.contact.label}</span><svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"><path d="M4 20L20 4M5 4H20V19"></path></svg
+      >
+    </a>
+    <button
+      class="site-header__toggle items-center"
+      type="button"
+      aria-expanded="false"
+      aria-controls="header-menu"
+      aria-haspopup="dialog"
+    >
+      <span>{portfolio.header.menu}</span>
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"><path d="M4 8H20M8 16H20"></path></svg
+      >
+    </button>
+    <span class="site-header__rule" aria-hidden="true"></span>
+  </div>
+</header>
+<HeaderMenu />
