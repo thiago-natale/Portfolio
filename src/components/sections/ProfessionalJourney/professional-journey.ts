@@ -31,7 +31,7 @@ export function measureJourneyRoute(root: HTMLElement) {
   route.style.height = `${height}px`;
   route.setAttribute('viewBox', `0 0 ${routeBox.width} ${height}`);
   // Measure the prefix before adding the second detour: vertical distance alone
-  // no longer identifies the Electric Ink stop on the completed path.
+  // no longer identifies the second company stop on the completed path.
   paths[1].setAttribute('d', bridge);
   const bridgeLength = paths[1].getTotalLength();
   paths.forEach(path => path.setAttribute('d', d));
@@ -55,7 +55,7 @@ export function animateProfessionalJourney(root: HTMLElement, scope: MotionScope
   const nodes = entries.map(entry => entry.querySelector('.career-entry__node')!);
   const cores = entries.map(entry => entry.querySelector('.career-entry__core')!);
   const outcomes = entries.map(entry => entry.querySelector('.career-entry__outcome')!);
-  const mobileIds = ['journey-unimed', 'journey-electric-ink'];
+  const mobileIds = entries.map(entry => `journey-${entry.dataset.experience}`);
   // Only the finite mobile entrances retain completion. Desktop always follows scroll.
   const completed = mobileIds.every(id => scope.completed.has(id));
   const { route, signal, destinationProgress, restore } = measureJourneyRoute(root);
@@ -93,12 +93,12 @@ export function animateProfessionalJourney(root: HTMLElement, scope: MotionScope
 
   if (scope.mobile) {
     const first = base().duration(.7);
-    enter(scope, 'journey-unimed', entries[0], first);
+    enter(scope, mobileIds[0], entries[0], first);
     const second = gsap.timeline().addLabel('ponte').add(bridge(), 0).addLabel('aplicacao', .85).add(destination(), 'aplicacao').addLabel('transicao', 1.75).duration(.9);
     // Use the child's completion point in the parent's local time, regardless
     // of the shorter mobile duration. Updates also cover direct seeks/anchors.
     second.eventCallback('onUpdate', () => { if (second.time() >= second.labels.transicao) transition.release(); });
-    enter(scope, 'journey-electric-ink', entries[1], second);
+    enter(scope, mobileIds[1], entries[1], second);
     if (completed) transition.release();
     return;
   }

@@ -109,20 +109,6 @@ export const portfolio = {
       "Minha experiência em TI corporativa sustenta o desenvolvimento de interfaces, integrações e automação.",
     experiences: [
       {
-        id: "unimed",
-        company: "UNIMED UBERABA",
-        companyLines: ["UNIMED", "UBERABA"],
-        role: "Auxiliar de TI",
-        start: { label: "SET 2022", date: "2022-09" },
-        end: { label: "SET 2024", date: "2024-09" },
-        location: "Uberaba, MG",
-        paragraphs: [
-          "Suporte, gestão de ativos e administração de ambientes corporativos, com Windows Server, Active Directory e GPOs.",
-          "Desenvolvimento de scripts para automatizar fluxos e rotinas de TI, conectando conhecimento técnico às necessidades da operação.",
-        ],
-        outcome: "BASE EM AMBIENTES CORPORATIVOS",
-      },
-      {
         id: "electric-ink",
         company: "ELECTRIC INK",
         companyLines: ["ELECTRIC", "INK"],
@@ -137,6 +123,20 @@ export const portfolio = {
           // "Iniciativa de refatoração com geração de páginas estáticas (SSG) e design system. Automações em Node.js integradas ao SAP Business One e ao e-commerce, além da implantação do GLPI.",
         ],
         outcome: "INTERFACES, INTEGRAÇÕES E AUTOMAÇÃO",
+      },
+      {
+        id: "unimed",
+        company: "UNIMED UBERABA",
+        companyLines: ["UNIMED", "UBERABA"],
+        role: "Auxiliar de TI",
+        start: { label: "SET 2022", date: "2022-09" },
+        end: { label: "SET 2024", date: "2024-09" },
+        location: "Uberaba, MG",
+        paragraphs: [
+          "Suporte, gestão de ativos e administração de ambientes corporativos, com Windows Server, Active Directory e GPOs.",
+          "Desenvolvimento de scripts para automatizar fluxos e rotinas de TI, conectando conhecimento técnico às necessidades da operação.",
+        ],
+        outcome: "BASE EM AMBIENTES CORPORATIVOS",
       },
     ],
   },
