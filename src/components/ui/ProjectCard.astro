@@ -1,50 +1,136 @@
 ---
-import type { Project } from '../../data/portfolio';
-import Icon from './Icon.astro';
-interface Props { project: Project }
+import type { Project } from "../../data/portfolio";
+import Icon from "./Icon.astro";
+interface Props {
+  project: Project;
+}
 const { project } = Astro.props;
-const Tag = project.href ? 'a' : 'article';
+const Tag = project.href ? "a" : "article";
 ---
-<Tag class="project-card block" href={project.href || undefined} aria-label={project.href ? `${project.name}: ${project.detail}` : undefined}>
-  <div class:list={['project-card__preview', `project-card__preview--${project.tone}`, 'overflow-hidden']}>
+
+<Tag
+  class="project-card block"
+  href={project.href || undefined}
+  aria-label={project.href ? `${project.name}: ${project.detail}` : undefined}
+>
+  <div
+    class:list={[
+      "project-card__preview",
+      `project-card__preview--${project.tone}`,
+      "overflow-hidden",
+    ]}
+  >
     {project.image ? (
-      <img src={project.image} alt={project.alt} width="660" height="398" loading="lazy" decoding="async" />
+      <img
+        src={project.image}
+        alt={project.alt}
+        width="660"
+        height="398"
+        loading="lazy"
+        decoding="async"
+      />
     ) : (
-      <div class="project-card__placeholder flex h-full flex-col items-center justify-center" role="img" aria-label={`Prévia a inserir — ${project.alt}`}>
+      <div
+        class="project-card__placeholder flex h-full flex-col items-center justify-center"
+        role="img"
+        aria-label={`Prévia a inserir — ${project.alt}`}
+      >
         <Icon name="image" />
         <span>PRÉVIA A INSERIR</span>
       </div>
     )}
   </div>
   <div class="project-card__caption flex items-center">
-    <span class="project-card__number" aria-hidden="true">{project.number}</span>
+    <span class="project-card__number" aria-hidden="true">
+      {project.number}
+    </span>
     <div class="min-w-0">
       <h3 class="project-card__title uppercase">{project.name}</h3>
       <p class="project-card__category uppercase">{project.category}</p>
     </div>
-    {project.href && <Icon name="arrow" class="project-card__arrow ml-auto shrink-0" />}
+    {project.href && (
+      <Icon name="arrow" class="project-card__arrow ml-auto shrink-0" />
+    )}
   </div>
   <p class="sr-only">{project.detail}</p>
 </Tag>
 <style>
-  .project-card__preview { aspect-ratio: 1.66; border: 1px solid #242020; background: #111; }
-  .project-card__preview--light { background: #d0ccc4; color: #59564f; }
-  .project-card__preview--dark { color: #a0a0a0; }
-  .project-card__placeholder { gap: calc(10 * var(--u)); font-size: calc(8 * var(--u)); letter-spacing: .14em; }
-  .project-card__placeholder svg { width: calc(21 * var(--u)); height: calc(21 * var(--u)); opacity: .5; }
-  .project-card__preview img { width: 100%; height: 100%; object-fit: cover; transition: transform 200ms ease; }
-  a.project-card:hover img { transform: scale(1.02); }
-  .project-card__caption { gap: calc(19 * var(--u)); padding-top: calc(12 * var(--u)); }
-  .project-card__number { font-family: var(--font-narrow); color: var(--color-accent); font-size: calc(30 * var(--u)); line-height: 1; }
-  .project-card__title { font-size: calc(9.1 * var(--u)); font-weight: 500; line-height: 1.4; }
-  .project-card__category { font-size: calc(6.8 * var(--u)); line-height: 1.5; color: var(--color-muted); }
-  .project-card__arrow { width: calc(22 * var(--u)); color: var(--color-muted); }
+  .project-card__preview {
+    aspect-ratio: 1.66;
+    border: 1px solid #242020;
+    background: #111;
+  }
+  .project-card__preview--light {
+    background: #d0ccc4;
+    color: #59564f;
+  }
+  .project-card__preview--dark {
+    color: #a0a0a0;
+  }
+  .project-card__placeholder {
+    gap: calc(10 * var(--u));
+    font-size: calc(8 * var(--u));
+    letter-spacing: 0.14em;
+  }
+  .project-card__placeholder svg {
+    width: calc(21 * var(--u));
+    height: calc(21 * var(--u));
+    opacity: 0.5;
+  }
+  .project-card__preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 200ms ease;
+  }
+  a.project-card:hover img {
+    transform: scale(1.02);
+  }
+  .project-card__caption {
+    gap: calc(19 * var(--u));
+    padding-top: calc(12 * var(--u));
+  }
+  .project-card__number {
+    font-family: var(--font-narrow);
+    color: var(--color-accent);
+    font-size: calc(30 * var(--u));
+    line-height: 1;
+  }
+  .project-card__title {
+    font-size: calc(9.1 * var(--u));
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .project-card__category {
+    font-size: calc(6.8 * var(--u));
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+  .project-card__arrow {
+    width: calc(22 * var(--u));
+    color: var(--color-muted);
+  }
   @media (max-width: 599px) {
-    .project-card__placeholder { gap: 12px; font-size: 10px; }
-    .project-card__placeholder svg { width: 28px; height: 28px; }
-    .project-card__caption { gap: 20px; padding-top: 13px; }
-    .project-card__number { font-size: 34px; }
-    .project-card__title { font-size: 13px; }
-    .project-card__category { font-size: 9px; }
+    .project-card__placeholder {
+      gap: 12px;
+      font-size: 10px;
+    }
+    .project-card__placeholder svg {
+      width: 28px;
+      height: 28px;
+    }
+    .project-card__caption {
+      gap: 20px;
+      padding-top: 13px;
+    }
+    .project-card__number {
+      font-size: 34px;
+    }
+    .project-card__title {
+      font-size: 13px;
+    }
+    .project-card__category {
+      font-size: 9px;
+    }
   }
 </style>

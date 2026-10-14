@@ -241,7 +241,8 @@ export const portfolio = {
   resume: {
     label: "CURRÍCULO",
     heading: ["MINHA EXPERIÊNCIA,", "EM DETALHES."],
-    description: "Consulte minha trajetória, formação e competências no currículo completo.",
+    description:
+      "Consulte minha trajetória, formação e competências no currículo completo.",
     view: "VISUALIZAR CURRÍCULO",
     download: "BAIXAR PDF",
     file: "/documents/thiago-natale-curriculo.pdf",

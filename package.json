@@ -12,6 +12,10 @@
     "preview": "astro preview",
     "brand:sync": "node scripts/sync-brand.mjs",
     "pdf:sync": "node scripts/sync-pdfjs-assets.mjs",
+    "format": "prettier --ignore-path .prettierignore --write \"src/**/*.{astro,ts,js,mjs,cjs,css,json}\" \"scripts/**/*.{js,mjs,cjs,ts}\" \"*.{js,mjs,cjs,json}\" \".prettierrc.json\"",
+    "format:check": "prettier --ignore-path .prettierignore --check \"src/**/*.{astro,ts,js,mjs,cjs,css,json}\" \"scripts/**/*.{js,mjs,cjs,ts}\" \"*.{js,mjs,cjs,json}\" \".prettierrc.json\"",
+    "lint": "eslint src scripts astro.config.mjs eslint.config.mjs",
+    "lint:fix": "npm run lint -- --fix",
     "astro": "astro"
   },
   "dependencies": {
@@ -25,5 +29,14 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.12.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "typescript-eslint": "^8.71.2"
   }
 }

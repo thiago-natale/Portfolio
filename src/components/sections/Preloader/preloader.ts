@@ -77,10 +77,13 @@ export function startPreloader() {
     clearTimeout(watchdog);
     clearTimeout((window as any).__portfolioPreloaderFallback);
     element.dataset.stage = "exit";
-    element.querySelector(".preloader__status")!.textContent = element.dataset.readyLabel!;
+    element.querySelector(".preloader__status")!.textContent =
+      element.dataset.readyLabel!;
     try {
       sessionStorage.setItem(PRELOADER_STORAGE_KEY, "1");
-    } catch {}
+    } catch {
+      // Private browsing can deny session storage; the opening still works.
+    }
     ctx.add(() => {
       exit = gsap.timeline({
         onComplete: close,
@@ -109,7 +112,9 @@ export function startPreloader() {
   const onSkip = () => {
     try {
       sessionStorage.setItem(PRELOADER_STORAGE_KEY, "1");
-    } catch {}
+    } catch {
+      // Skipping the opening must work even when session storage is unavailable.
+    }
     finish("skip");
   };
   const onKey = (event: KeyboardEvent) => {
@@ -143,7 +148,8 @@ export function startPreloader() {
         },
       });
       draw.addLabel("traco", 0).addLabel("corpo", 1.25).addLabel("marca", 2.35);
-      draw.fromTo(element.querySelector(".preloader__mark"),
+      draw.fromTo(
+        element.querySelector(".preloader__mark"),
         { autoAlpha: 0 },
         { autoAlpha: 1, duration: 0.25, ease: "power1.out" },
         "traco",

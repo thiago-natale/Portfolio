@@ -1,15 +1,22 @@
 ---
-import { portfolio } from '../../../data/portfolio';
-import ServiceArea from '../../ui/ServiceArea.astro';
-import './areas-of-work.css';
+import { portfolio } from "../../../data/portfolio";
+import ServiceArea from "../../ui/ServiceArea.astro";
+import "./areas-of-work.css";
 ---
+
 <section id="atuacao" class="areas-of-work" aria-labelledby="areas-title">
   <header class="areas-of-work__heading flex items-center">
-    <h2 id="areas-title" class="section-title shrink-0">{portfolio.areasOfWork.heading}</h2>
+    <h2 id="areas-title" class="section-title shrink-0">
+      {portfolio.areasOfWork.heading}
+    </h2>
     <span class="areas-of-work__rule grow" aria-hidden="true"></span>
-    <p class="areas-of-work__eyebrow uppercase">{portfolio.areasOfWork.eyebrow}</p>
+    <p class="areas-of-work__eyebrow uppercase">
+      {portfolio.areasOfWork.eyebrow}
+    </p>
   </header>
   <div class="areas-of-work__content">
-    {portfolio.areasOfWork.areas.map((area) => <ServiceArea area={area} />)}
+    {portfolio.areasOfWork.areas.map((area) => (
+      <ServiceArea area={area} />
+    ))}
   </div>
 </section>

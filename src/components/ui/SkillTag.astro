@@ -1,10 +1,50 @@
 ---
-interface Props { label: string }
+interface Props {
+  label: string;
+}
 const { label } = Astro.props;
 ---
-<li class="skill-tag uppercase"><span>{label}</span><svg class="skill-tag__outline" preserveAspectRatio="none" viewBox="0 0 100 30" fill="none" aria-hidden="true" focusable="false"><path d="M4 1H96Q99 1 99 4V26Q99 29 96 29H4Q1 29 1 26V4Q1 1 4 1Z" stroke="currentColor" vector-effect="non-scaling-stroke" /></svg></li>
+
+<li class="skill-tag uppercase">
+  <span>{label}</span>
+  <svg
+    class="skill-tag__outline"
+    preserveAspectRatio="none"
+    viewBox="0 0 100 30"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M4 1H96Q99 1 99 4V26Q99 29 96 29H4Q1 29 1 26V4Q1 1 4 1Z"
+      stroke="currentColor"
+      vector-effect="non-scaling-stroke"
+    />
+  </svg>
+</li>
 <style>
-  .skill-tag { position: relative; padding: calc(5 * var(--u)) calc(7 * var(--u)); border: 1px solid transparent; border-radius: 3px; font-size: calc(7 * var(--u)); line-height: 1; color: #b9b9b9; white-space: nowrap; }
-  .skill-tag__outline { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); color: #292929; pointer-events: none; }
-  @media (max-width: 599px) { .skill-tag { font-size: 10px; padding: 7px 9px; } }
+  .skill-tag {
+    position: relative;
+    padding: calc(5 * var(--u)) calc(7 * var(--u));
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: calc(7 * var(--u));
+    line-height: 1;
+    color: #b9b9b9;
+    white-space: nowrap;
+  }
+  .skill-tag__outline {
+    position: absolute;
+    inset: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    color: #292929;
+    pointer-events: none;
+  }
+  @media (max-width: 599px) {
+    .skill-tag {
+      font-size: 10px;
+      padding: 7px 9px;
+    }
+  }
 </style>

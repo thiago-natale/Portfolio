@@ -14,15 +14,13 @@ export function animateContact(root: HTMLElement, scope: MotionScope) {
     .addLabel("ambiente", 0.5)
     .addLabel("conversa", 1);
   // Each authored title line is split separately, preserving its original wrapping.
-  root
-    .querySelectorAll("h2 > span")
-    .forEach((line, i) =>
-      revealText(scope, tl, line, i * 0.1, {
-        duration: 0.5,
-        scaleY: 0.6,
-        transformOrigin: "bottom",
-      }),
-    );
+  root.querySelectorAll("h2 > span").forEach((line, i) =>
+    revealText(scope, tl, line, i * 0.1, {
+      duration: 0.5,
+      scaleY: 0.6,
+      transformOrigin: "bottom",
+    }),
+  );
   root.querySelectorAll(".contact-link").forEach((link, i) => {
     tl.from(
       link.querySelector(".stroke-ring circle"),
@@ -72,7 +70,8 @@ export function animateContact(root: HTMLElement, scope: MotionScope) {
   });
   const update = () => {
     const active = cta.matches(":hover") || cta.matches(":focus-visible");
-    active ? hover.play() : hover.reverse();
+    if (active) hover.play();
+    else hover.reverse();
   };
   ["pointerenter", "pointerleave", "focus", "blur"].forEach((name) =>
     cta.addEventListener(name, update),

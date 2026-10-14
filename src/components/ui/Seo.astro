@@ -1,26 +1,32 @@
 ---
-import { portfolio } from '../../data/portfolio';
+import { portfolio } from "../../data/portfolio";
 
 const { seo } = portfolio;
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
-const socialImage = Astro.site ? new URL(seo.image, Astro.site).href : undefined;
-const portraitUrl = Astro.site ? new URL(portfolio.assets.portrait.src, Astro.site).href : undefined;
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : undefined;
+const socialImage = Astro.site
+  ? new URL(seo.image, Astro.site).href
+  : undefined;
+const portraitUrl = Astro.site
+  ? new URL(portfolio.assets.portrait.src, Astro.site).href
+  : undefined;
 const profile = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  ...(canonical && { '@id': `${canonical}#profile`, url: canonical }),
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  ...(canonical && { "@id": `${canonical}#profile`, url: canonical }),
   name: seo.title,
   description: portfolio.description,
-  inLanguage: 'pt-BR',
+  inLanguage: "pt-BR",
   mainEntity: {
-    '@type': 'Person',
-    ...(canonical && { '@id': `${canonical}#thiago-natale`, url: canonical }),
+    "@type": "Person",
+    ...(canonical && { "@id": `${canonical}#thiago-natale`, url: canonical }),
     name: portfolio.name,
     jobTitle: seo.jobTitle,
     description: portfolio.hero.introduction,
     ...(portraitUrl && { image: portraitUrl }),
     address: {
-      '@type': 'PostalAddress',
+      "@type": "PostalAddress",
       addressLocality: seo.address.city,
       addressRegion: seo.address.region,
       addressCountry: seo.address.country,
@@ -28,8 +34,9 @@ const profile = {
     sameAs: [portfolio.linkedin, portfolio.github],
   },
 };
-const json = JSON.stringify(profile).replace(/</g, '\\u003c');
+const json = JSON.stringify(profile).replace(/</g, "\\u003c");
 ---
+
 <title>{seo.title}</title>
 <meta name="description" content={portfolio.description} />
 <meta name="author" content={portfolio.name} />
@@ -39,16 +46,18 @@ const json = JSON.stringify(profile).replace(/</g, '\\u003c');
 <meta property="og:title" content={seo.title} />
 <meta property="og:description" content={portfolio.description} />
 {canonical && <meta property="og:url" content={canonical} />}
-{socialImage && <>
-  <meta property="og:image" content={socialImage} />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content={seo.imageAlt} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content={socialImage} />
-  <meta name="twitter:image:alt" content={seo.imageAlt} />
-</>}
+{socialImage && (
+  <>
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={seo.imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={seo.imageAlt} />
+  </>
+)}
 <meta name="twitter:title" content={seo.title} />
 <meta name="twitter:description" content={portfolio.description} />
 <script type="application/ld+json" is:inline set:html={json} />

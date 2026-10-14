@@ -1,21 +1,22 @@
 ---
-import '../styles/global.css';
-import { portfolio } from '../data/portfolio';
-import Preloader from '../components/sections/Preloader/Preloader.astro';
-import PreloaderBootstrap from '../components/sections/Preloader/PreloaderBootstrap.astro';
-import Header from '../components/sections/Header/Header.astro';
-import Seo from '../components/ui/Seo.astro';
-import ResumeViewer from '../components/sections/Resume/ResumeViewer.astro';
-import  Analytics  from '@vercel/analytics/astro';
-import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
-import { join } from 'node:path';
-const faviconVersion = createHash('sha256')
-  .update(await readFile(join(process.cwd(), 'public/favicon.svg')))
-  .update(await readFile(join(process.cwd(), 'public/favicon.ico')))
-  .digest('hex').slice(0, 12);
-
+import "../styles/global.css";
+import { portfolio } from "../data/portfolio";
+import Preloader from "../components/sections/Preloader/Preloader.astro";
+import PreloaderBootstrap from "../components/sections/Preloader/PreloaderBootstrap.astro";
+import Header from "../components/sections/Header/Header.astro";
+import Seo from "../components/ui/Seo.astro";
+import ResumeViewer from "../components/sections/Resume/ResumeViewer.astro";
+import Analytics from "@vercel/analytics/astro";
+import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { join } from "node:path";
+const faviconVersion = createHash("sha256")
+  .update(await readFile(join(process.cwd(), "public/favicon.svg")))
+  .update(await readFile(join(process.cwd(), "public/favicon.ico")))
+  .digest("hex")
+  .slice(0, 12);
 ---
+
 <!doctype html>
 <html lang="pt-BR">
   <head>
@@ -23,25 +24,45 @@ const faviconVersion = createHash('sha256')
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080808" />
     <Seo />
-    <Analytics/>
-    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href={`/favicon.ico?v=${faviconVersion}`} />
-    <link rel="icon" type="image/svg+xml" sizes="any" href={`/favicon.svg?v=${faviconVersion}`} />
-    <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin />
+    <Analytics />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48"
+      href={`/favicon.ico?v=${faviconVersion}`}
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href={`/favicon.svg?v=${faviconVersion}`}
+    />
+    <link
+      rel="preload"
+      href="/fonts/anton.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta name="generator" content={Astro.generator} />
     <PreloaderBootstrap />
   </head>
   <body>
     <Preloader />
-    <a class="skip-link" href="#conteudo">{portfolio.accessibility.skip}</a>
+    <a class="skip-link" href="#conteudo">
+      {portfolio.accessibility.skip}
+    </a>
     <Header />
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <main id="conteudo" tabindex="-1" class="portfolio mx-auto"><slot /></main>
+        <main id="conteudo" tabindex="-1" class="portfolio mx-auto">
+          <slot />
+        </main>
       </div>
     </div>
     <ResumeViewer />
     <script>
-      import '../scripts/motion';
+      import "../scripts/motion";
     </script>
   </body>
 </html>

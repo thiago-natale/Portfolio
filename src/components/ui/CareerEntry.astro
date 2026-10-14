@@ -1,12 +1,23 @@
 ---
-import type { CareerExperience } from '../../data/portfolio';
-interface Props { experience: CareerExperience }
+import type { CareerExperience } from "../../data/portfolio";
+interface Props {
+  experience: CareerExperience;
+}
 const { experience } = Astro.props;
 ---
+
 <li class="career-entry relative grid" data-experience={experience.id}>
   <div class="career-entry__identity">
-    <h3 id={`career-${experience.id}`} class="career-entry__company font-display uppercase">
-      {experience.companyLines.map((line, index) => <>{index > 0 && ' '}<span class="block">{line}</span></>)}
+    <h3
+      id={`career-${experience.id}`}
+      class="career-entry__company font-display uppercase"
+    >
+      {experience.companyLines.map((line, index) => (
+        <>
+          {index > 0 && " "}
+          <span class="block">{line}</span>
+        </>
+      ))}
     </h3>
     <p class="career-entry__role">{experience.role}</p>
     <p class="career-entry__period whitespace-nowrap">
@@ -17,13 +28,23 @@ const { experience } = Astro.props;
     </p>
     <p class="career-entry__location">{experience.location}</p>
   </div>
-  <svg class="career-entry__milestone" viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true" focusable="false">
+  <svg
+    class="career-entry__milestone"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
     <path class="career-entry__node-base" d="M12 3L21 12L12 21L3 12Z" />
     <path class="career-entry__node" d="M12 3L21 12L12 21L3 12Z" />
     <path class="career-entry__core" d="M12 9L15 12L12 15L9 12Z" />
   </svg>
   <div class="career-entry__content">
-    {experience.paragraphs.map((paragraph) => <p class="career-entry__paragraph">{paragraph}</p>)}
+    {experience.paragraphs.map((paragraph) => (
+      <p class="career-entry__paragraph">{paragraph}</p>
+    ))}
     <p class="career-entry__outcome uppercase">{experience.outcome}</p>
   </div>
 </li>

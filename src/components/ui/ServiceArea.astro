@@ -1,12 +1,15 @@
 ---
-import type { ServiceArea } from '../../data/portfolio';
-import ServiceDiagram from './ServiceDiagram.astro';
-interface Props { area: ServiceArea }
+import type { ServiceArea } from "../../data/portfolio";
+import ServiceDiagram from "./ServiceDiagram.astro";
+interface Props {
+  area: ServiceArea;
+}
 const { area } = Astro.props;
 ---
+
 <article class="service-area grid items-center">
   <h3 class="service-area__title uppercase">
-    <span class="block">{area.title}</span>{' '}
+    <span class="block">{area.title}</span>{" "}
     <span class="service-area__outcome block">{area.outcome}</span>
   </h3>
   <ServiceDiagram kind={area.diagram} />
@@ -26,9 +29,11 @@ const { area } = Astro.props;
     font-size: calc(27 * var(--u));
     font-weight: 400;
     line-height: 1.2;
-    letter-spacing: -.015em;
+    letter-spacing: -0.015em;
   }
-  .service-area__outcome { color: var(--color-accent-text); }
+  .service-area__outcome {
+    color: var(--color-accent-text);
+  }
   .service-area__description {
     color: var(--color-muted);
     font-size: calc(10.8 * var(--u));
@@ -38,8 +43,21 @@ const { area } = Astro.props;
     text-wrap: pretty;
   }
   @media (max-width: 599px) {
-    .service-area { grid-template-columns: minmax(0, 1fr) 72px; gap: 15px; min-height: 0; padding-block: 25px; }
-    .service-area__title { font-size: 28px; }
-    .service-area__description { grid-column: 1 / -1; font-size: 13px; line-height: 1.6; border: 0; padding: 0; }
+    .service-area {
+      grid-template-columns: minmax(0, 1fr) 72px;
+      gap: 15px;
+      min-height: 0;
+      padding-block: 25px;
+    }
+    .service-area__title {
+      font-size: 28px;
+    }
+    .service-area__description {
+      grid-column: 1 / -1;
+      font-size: 13px;
+      line-height: 1.6;
+      border: 0;
+      padding: 0;
+    }
   }
 </style>

@@ -10,10 +10,14 @@ import "./preloader.css";
   data-stage="pending"
   data-ready-label={portfolio.preloader.ready}
 >
-  <div class="preloader__curtain preloader__curtain--left" aria-hidden="true">
-  </div>
-  <div class="preloader__curtain preloader__curtain--right" aria-hidden="true">
-  </div>
+  <div
+    class="preloader__curtain preloader__curtain--left"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="preloader__curtain preloader__curtain--right"
+    aria-hidden="true"
+  ></div>
   <div class="preloader__composition">
     <div class="preloader__mark">
       <BrandMark class="preloader__outline" />
@@ -28,15 +32,17 @@ import "./preloader.css";
       {portfolio.preloader.preparing}
     </p>
   </div>
-  <button class="preloader__skip" type="button"
-    >{portfolio.preloader.skip}
+  <button class="preloader__skip" type="button">
+    {portfolio.preloader.skip}
     <svg
       viewBox="0 0 24 24"
       width="24"
       height="24"
       aria-hidden="true"
       fill="none"
-      stroke="currentColor"><path d="M4 20L20 4M5 4H20V19"></path></svg
-    ></button
-  >
+      stroke="currentColor"
+    >
+      <path d="M4 20L20 4M5 4H20V19"></path>
+    </svg>
+  </button>
 </div>

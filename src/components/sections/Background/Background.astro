@@ -10,44 +10,80 @@ import "./background.css";
   class="background grid"
   aria-labelledby="education-title process-title"
 >
-  <div class="background__education" role="group" aria-labelledby="education-title">
+  <div
+    class="background__education"
+    role="group"
+    aria-labelledby="education-title"
+  >
     <span class="background__column-rule" aria-hidden="true"></span>
-    <h2 id="education-title" class="section-title">{portfolio.background.heading}</h2>
+    <h2 id="education-title" class="section-title">
+      {portfolio.background.heading}
+    </h2>
     <div class="background__education-list">
-      <h3 id="education-list-title" class="background__label">{portfolio.background.education}</h3>
+      <h3 id="education-list-title" class="background__label">
+        {portfolio.background.education}
+      </h3>
       <ul role="list" aria-labelledby="education-list-title">
-      {
-        portfolio.education.map((item) => (
+        {portfolio.education.map((item) => (
           <li class="background__qualification relative">
             <p class="background__qualification-title">{item.title}</p>
             <p class="background__institution">{item.institution}</p>
-            {item.period && <p class="background__period"><time datetime={item.start!}>{item.period.split('–')[0]}</time>–<time datetime={item.end!}>{item.period.split('–')[1]}</time></p>}
+            {item.period && (
+              <p class="background__period">
+                <time datetime={item.start!}>{item.period.split("–")[0]}</time>–
+                <time datetime={item.end!}>{item.period.split("–")[1]}</time>
+              </p>
+            )}
           </li>
-        ))
-      }
+        ))}
       </ul>
     </div>
     <div class="background__skills">
-      <h3 id="skills-title" class="background__label">{portfolio.background.skills}</h3>
-      <ul class="background__skill-list" role="list" aria-labelledby="skills-title">
-        {portfolio.skills.flat().map(label => <SkillTag label={label} />)}
+      <h3 id="skills-title" class="background__label">
+        {portfolio.background.skills}
+      </h3>
+      <ul
+        class="background__skill-list"
+        role="list"
+        aria-labelledby="skills-title"
+      >
+        {portfolio.skills.flat().map((label) => (
+          <SkillTag label={label} />
+        ))}
       </ul>
     </div>
   </div>
   <div class="background__process" role="group" aria-labelledby="process-title">
     <span class="background__column-rule" aria-hidden="true"></span>
-    <h2 id="process-title" class="section-title">{portfolio.background.process}</h2>
+    <h2 id="process-title" class="section-title">
+      {portfolio.background.process}
+    </h2>
     <ol class="background__steps" role="list" aria-labelledby="process-title">
-      {portfolio.process.map((step) => <ProcessStep step={step} />)}
+      {portfolio.process.map((step) => (
+        <ProcessStep step={step} />
+      ))}
     </ol>
   </div>
   <aside class="background__statement flex flex-col">
     <span class="background__depth" aria-hidden="true"></span>
-    <span class="background__quote-mark" aria-hidden="true">“</span>
+    <span class="background__quote-mark" aria-hidden="true">
+      “
+    </span>
     <p class="background__quote">{portfolio.statement}</p>
     <p class="background__signature">{portfolio.name}</p>
     <div class="background__invitation mt-auto uppercase">
-      <p>{portfolio.background.invitation.map((line, index) => <>{index > 0 && <><br />{' '}</>}{line}</>)}</p>
+      <p>
+        {portfolio.background.invitation.map((line, index) => (
+          <>
+            {index > 0 && (
+              <>
+                <br />{" "}
+              </>
+            )}
+            {line}
+          </>
+        ))}
+      </p>
     </div>
   </aside>
 </section>

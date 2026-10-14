@@ -1,24 +1,59 @@
 ---
-import { portfolio } from '../../../data/portfolio';
-import BrandLink from '../../ui/BrandLink.astro';
-import HeaderNavigation from './HeaderNavigation.astro';
+import { portfolio } from "../../../data/portfolio";
+import BrandLink from "../../ui/BrandLink.astro";
+import HeaderNavigation from "./HeaderNavigation.astro";
 ---
-<dialog id="header-menu" class="header-menu" aria-labelledby="header-menu-title">
+
+<dialog
+  id="header-menu"
+  class="header-menu"
+  aria-labelledby="header-menu-title"
+>
   <div class="header-menu__surface">
     <div class="header-menu__inner">
       <div class="header-menu__top flex items-center justify-between">
         <BrandLink />
-        <button class="header-menu__close flex items-center" type="button" autofocus>
+        <button
+          class="header-menu__close flex items-center"
+          type="button"
+          autofocus
+        >
           <span>{portfolio.header.close}</span>
-          <svg class="header-menu__close-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M5 5L19 19M19 5L5 19" /></svg>
+          <svg
+            class="header-menu__close-icon"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path d="M5 5L19 19M19 5L5 19" />
+          </svg>
         </button>
       </div>
       <div class="header-menu__body">
-        <h2 id="header-menu-title" class="header-menu__title">{portfolio.header.navigation}</h2>
+        <h2 id="header-menu-title" class="header-menu__title">
+          {portfolio.header.navigation}
+        </h2>
         <HeaderNavigation compact />
         <div class="header-menu__contact">
-          <a class="header-contact flex items-center" href={portfolio.header.contact.href} data-header-target={portfolio.header.contact.href}>
-            <span>{portfolio.header.contact.label}</span><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M4 20L20 4M5 4H20V19" /></svg>
+          <a
+            class="header-contact flex items-center"
+            href={portfolio.header.contact.href}
+            data-header-target={portfolio.header.contact.href}
+          >
+            <span>{portfolio.header.contact.label}</span>
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M4 20L20 4M5 4H20V19" />
+            </svg>
           </a>
         </div>
       </div>

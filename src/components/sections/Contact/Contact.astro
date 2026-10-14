@@ -1,37 +1,101 @@
 ---
-import { portfolio } from '../../../data/portfolio';
-import ContactLink from '../../ui/ContactLink.astro';
-import StrokeRing from '../../ui/StrokeRing.astro';
-import './contact.css';
-import { readFile } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
-import { join } from 'node:path';
+import { portfolio } from "../../../data/portfolio";
+import ContactLink from "../../ui/ContactLink.astro";
+import StrokeRing from "../../ui/StrokeRing.astro";
+import "./contact.css";
+import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { join } from "node:path";
 // Computed during rendering/build; a new capture receives a fresh browser cache key.
-const mockupPath = '/images/notebook-portfolio.webp';
-const mockupVersion = createHash('sha256').update(await readFile(join(process.cwd(), 'public', mockupPath))).digest('hex').slice(0, 12);
+const mockupPath = "/images/notebook-portfolio.webp";
+const mockupVersion = createHash("sha256")
+  .update(await readFile(join(process.cwd(), "public", mockupPath)))
+  .digest("hex")
+  .slice(0, 12);
 const notebookMockup = `${mockupPath}?v=${mockupVersion}`;
 ---
-<section id="contato" class="contact relative grid overflow-hidden" aria-labelledby="contact-title">
+
+<section
+  id="contato"
+  class="contact relative grid overflow-hidden"
+  aria-labelledby="contact-title"
+>
   <div class="contact__introduction relative">
     <div class="contact__heading relative">
-      <h2 id="contact-title">{portfolio.contact.heading.map((line, index) => <>{index > 0 && ' '}<span class="block">{line}</span></>)}</h2>
-      
+      <h2 id="contact-title">
+        {portfolio.contact.heading.map((line, index) => (
+          <>
+            {index > 0 && " "}
+            <span class="block">{line}</span>
+          </>
+        ))}
+      </h2>
     </div>
     <p class="contact__description">{portfolio.contact.description}</p>
-    <a class="contact__cta inline-flex items-center uppercase" href={`mailto:${portfolio.email}`}>
-      <span class="contact__cta-icon flex items-center justify-center"><StrokeRing /><svg class="contact__cta-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="contact__morph" d="M3 12H21M16 7L21 12L16 17" data-mail-shape="M3 5H21V19H3ZM3 6L12 13L21 6" /></svg></span>
+    <a
+      class="contact__cta inline-flex items-center uppercase"
+      href={`mailto:${portfolio.email}`}
+    >
+      <span class="contact__cta-icon flex items-center justify-center">
+        <StrokeRing />
+        <svg
+          class="contact__cta-glyph"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.25"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            class="contact__morph"
+            d="M3 12H21M16 7L21 12L16 17"
+            data-mail-shape="M3 5H21V19H3ZM3 6L12 13L21 6"
+          />
+        </svg>
+      </span>
       <span>{portfolio.contact.cta}</span>
     </a>
   </div>
   <address class="contact__links relative not-italic">
-    <ContactLink icon="mail" label={portfolio.email} href={`mailto:${portfolio.email}`} />
-    <ContactLink icon="profile" label={portfolio.contact.linkedinLabel} href={portfolio.linkedin} />
-    <ContactLink icon="github" label={portfolio.contact.githubLabel} href={portfolio.github} />
-    <ContactLink icon="phone" label={portfolio.phone} href={portfolio.phoneHref} />
+    <ContactLink
+      icon="mail"
+      label={portfolio.email}
+      href={`mailto:${portfolio.email}`}
+    />
+    <ContactLink
+      icon="profile"
+      label={portfolio.contact.linkedinLabel}
+      href={portfolio.linkedin}
+    />
+    <ContactLink
+      icon="github"
+      label={portfolio.contact.githubLabel}
+      href={portfolio.github}
+    />
+    <ContactLink
+      icon="phone"
+      label={portfolio.phone}
+      href={portfolio.phoneHref}
+    />
     <ContactLink icon="pin" label={portfolio.location} />
   </address>
-  <div class="contact__visual relative" role="img" aria-label="Notebook preto com o portfólio de Thiago Natale na tela e uma caneca escura ao lado.">
+  <div
+    class="contact__visual relative"
+    role="img"
+    aria-label="Notebook preto com o portfólio de Thiago Natale na tela e uma caneca escura ao lado."
+  >
     <!-- Perspective is baked into the asset to avoid foreignObject compositing on iOS. -->
-    <img class="contact__notebook" src={notebookMockup} alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+    <img
+      class="contact__notebook"
+      src={notebookMockup}
+      alt=""
+      width="1536"
+      height="1024"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
 </section>

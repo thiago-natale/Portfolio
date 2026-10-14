@@ -1,27 +1,80 @@
 ---
-import { portfolio } from '../../../data/portfolio';
-import './resume.css';
+import { portfolio } from "../../../data/portfolio";
+import "./resume.css";
 const { resume } = portfolio;
 ---
+
 <section id="curriculo" class="resume grid" aria-labelledby="resume-title">
   <span class="resume__rule" aria-hidden="true"></span>
   <div class="resume__identity">
     <p class="resume__label">{resume.label}</p>
-    <h2 id="resume-title" class="resume__title">{resume.heading.map((line, index) => <>{index > 0 && ' '}<span class="block">{line}</span></>)}</h2>
+    <h2 id="resume-title" class="resume__title">
+      {resume.heading.map((line, index) => (
+        <>
+          {index > 0 && " "}
+          <span class="block">{line}</span>
+        </>
+      ))}
+    </h2>
   </div>
   <p class="resume__description">{resume.description}</p>
   <div class="resume__access">
     <div class="resume__document flex items-center">
-      <svg class="resume__symbol" viewBox="0 0 48 60" width="48" height="60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2">
-        <path d="M8 3H29L40 14V57H8Z" /><path d="M29 3V14H40" /><path d="M16 26H32M16 33H32M16 40H26" />
+      <svg
+        class="resume__symbol"
+        viewBox="0 0 48 60"
+        width="48"
+        height="60"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.2"
+      >
+        <path d="M8 3H29L40 14V57H8Z" />
+        <path d="M29 3V14H40" />
+        <path d="M16 26H32M16 33H32M16 40H26" />
       </svg>
-      <span class="resume__metadata">{portfolio.name.toUpperCase()}<br /><span>PDF · CURRÍCULO PROFISSIONAL</span></span>
+      <span class="resume__metadata">
+        {portfolio.name.toUpperCase()}
+        <br />
+        <span>PDF · CURRÍCULO PROFISSIONAL</span>
+      </span>
     </div>
-    <a class="resume__action resume__action--view flex items-center justify-between" href={resume.file} data-resume-open>
-      <span>{resume.view}</span><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor"><path d="M4 12C8 4 16 4 20 12C16 20 8 20 4 12Z" /><circle cx="12" cy="12" r="3" /></svg>
+    <a
+      class="resume__action resume__action--view flex items-center justify-between"
+      href={resume.file}
+      data-resume-open
+    >
+      <span>{resume.view}</span>
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path d="M4 12C8 4 16 4 20 12C16 20 8 20 4 12Z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
     </a>
-    <a class="resume__action resume__action--download flex items-center justify-between" href={resume.file} download={resume.filename}>
-      <span>{resume.download}</span><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor"><path class="resume__download-arrow" d="M12 3V16M7 11L12 16L17 11" /><path d="M5 18V21H19V18" /></svg>
+    <a
+      class="resume__action resume__action--download flex items-center justify-between"
+      href={resume.file}
+      download={resume.filename}
+    >
+      <span>{resume.download}</span>
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path class="resume__download-arrow" d="M12 3V16M7 11L12 16L17 11" />
+        <path d="M5 18V21H19V18" />
+      </svg>
     </a>
   </div>
 </section>

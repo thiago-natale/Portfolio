@@ -8,7 +8,14 @@
   padding: calc(20 * var(--u)) calc(20 * var(--u)) calc(22 * var(--u))
     var(--gutter);
 }
-.background__column-rule { position: absolute; right: 0; top: 0; bottom: 0; width: 1px; background: var(--color-line); }
+.background__column-rule {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-line);
+}
 .background__label {
   color: var(--color-accent-text);
   font-size: calc(9.3 * var(--u));
@@ -64,7 +71,12 @@
   padding: calc(18 * var(--u)) calc(20 * var(--u)) calc(18 * var(--u));
   background: #270508;
 }
-.background__depth { position: absolute; inset: 0; z-index: -1; background: linear-gradient(130deg, #8b0812 0%, #53070b 57%, #270508 100%); }
+.background__depth {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(130deg, #8b0812 0%, #53070b 57%, #270508 100%);
+}
 .background__quote-mark {
   color: #e4192a;
   font-family: Georgia, serif;
@@ -108,7 +120,9 @@
     border-right: 0;
     border-bottom: 1px solid var(--color-line);
   }
-  .background__column-rule { display: none; }
+  .background__column-rule {
+    display: none;
+  }
   .background__education-list {
     padding-top: 25px;
     padding-bottom: 22px;

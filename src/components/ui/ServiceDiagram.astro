@@ -1,39 +1,128 @@
 ---
-interface Props { kind: 'interface' | 'integration' | 'automation' }
+interface Props {
+  kind: "interface" | "integration" | "automation";
+}
 const { kind } = Astro.props;
 ---
-<svg class="service-diagram" data-diagram={kind} viewBox="0 0 100 90" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  {kind === 'interface' && <>
-    <path class="diagram__structure" d="M8 12H92V73H8Z" />
-    <path class="diagram__structure" d="M8 24H92" />
-    <path class="diagram__element" d="M17 34H46V62H17Z" />
-    <path class="diagram__element" d="M55 36H82M55 43H75" />
-    <path class="diagram__target" d="M55 53H83V63H55Z" />
-    <path class="diagram__route" d="M25 78C39 78 41 61 69 58" stroke="none" />
-    <circle class="diagram__signal" cx="0" cy="0" r="2.5" fill="currentColor" stroke="none" transform="translate(69 58)" />
-    <circle class="diagram__response" cx="69" cy="58" r="9" stroke="var(--color-accent-text)" />
-  </>}
-  {kind === 'integration' && <>
-    <path class="diagram__route diagram__structure" d="M18 22C18 45 50 26 50 45S82 43 82 68" />
-    <circle class="diagram__node" cx="18" cy="22" r="9" />
-    <circle class="diagram__node" cx="50" cy="45" r="9" />
-    <circle class="diagram__node diagram__target" cx="82" cy="68" r="9" />
-    <path class="diagram__element" d="M15 22H21M50 42V48M79 68H85" />
-    <circle class="diagram__signal" cx="0" cy="0" r="2.5" fill="currentColor" stroke="none" transform="translate(82 68)" />
-    <circle class="diagram__response" cx="82" cy="68" r="14" stroke="var(--color-accent-text)" />
-  </>}
-  {kind === 'automation' && <>
-    <path class="diagram__route diagram__structure" d="M22 22H72Q82 22 82 32V59Q82 69 72 69H28Q18 69 18 59V34Q18 22 22 22" />
-    <path class="diagram__node" d="M13 14H29V30H13Z" />
-    <path class="diagram__node" d="M74 37H90V53H74Z" />
-    <circle class="diagram__target" cx="50" cy="69" r="12" fill="var(--color-page)" />
-    <path class="diagram__completion" d="M43 69L48 74L57 63" data-start-shape="M45 64H55V74H45Z" data-final-shape="M43 69L48 74L57 63" />
-    <circle class="diagram__signal" cx="0" cy="0" r="2.5" fill="currentColor" stroke="none" transform="translate(22 22)" />
-    <circle class="diagram__response" cx="50" cy="69" r="17" stroke="var(--color-accent-text)" />
-  </>}
+
+<svg
+  class="service-diagram"
+  data-diagram={kind}
+  viewBox="0 0 100 90"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {kind === "interface" && (
+    <>
+      <path class="diagram__structure" d="M8 12H92V73H8Z" />
+      <path class="diagram__structure" d="M8 24H92" />
+      <path class="diagram__element" d="M17 34H46V62H17Z" />
+      <path class="diagram__element" d="M55 36H82M55 43H75" />
+      <path class="diagram__target" d="M55 53H83V63H55Z" />
+      <path class="diagram__route" d="M25 78C39 78 41 61 69 58" stroke="none" />
+      <circle
+        class="diagram__signal"
+        cx="0"
+        cy="0"
+        r="2.5"
+        fill="currentColor"
+        stroke="none"
+        transform="translate(69 58)"
+      />
+      <circle
+        class="diagram__response"
+        cx="69"
+        cy="58"
+        r="9"
+        stroke="var(--color-accent-text)"
+      />
+    </>
+  )}
+  {kind === "integration" && (
+    <>
+      <path
+        class="diagram__route diagram__structure"
+        d="M18 22C18 45 50 26 50 45S82 43 82 68"
+      />
+      <circle class="diagram__node" cx="18" cy="22" r="9" />
+      <circle class="diagram__node" cx="50" cy="45" r="9" />
+      <circle class="diagram__node diagram__target" cx="82" cy="68" r="9" />
+      <path class="diagram__element" d="M15 22H21M50 42V48M79 68H85" />
+      <circle
+        class="diagram__signal"
+        cx="0"
+        cy="0"
+        r="2.5"
+        fill="currentColor"
+        stroke="none"
+        transform="translate(82 68)"
+      />
+      <circle
+        class="diagram__response"
+        cx="82"
+        cy="68"
+        r="14"
+        stroke="var(--color-accent-text)"
+      />
+    </>
+  )}
+  {kind === "automation" && (
+    <>
+      <path
+        class="diagram__route diagram__structure"
+        d="M22 22H72Q82 22 82 32V59Q82 69 72 69H28Q18 69 18 59V34Q18 22 22 22"
+      />
+      <path class="diagram__node" d="M13 14H29V30H13Z" />
+      <path class="diagram__node" d="M74 37H90V53H74Z" />
+      <circle
+        class="diagram__target"
+        cx="50"
+        cy="69"
+        r="12"
+        fill="var(--color-page)"
+      />
+      <path
+        class="diagram__completion"
+        d="M43 69L48 74L57 63"
+        data-start-shape="M45 64H55V74H45Z"
+        data-final-shape="M43 69L48 74L57 63"
+      />
+      <circle
+        class="diagram__signal"
+        cx="0"
+        cy="0"
+        r="2.5"
+        fill="currentColor"
+        stroke="none"
+        transform="translate(22 22)"
+      />
+      <circle
+        class="diagram__response"
+        cx="50"
+        cy="69"
+        r="17"
+        stroke="var(--color-accent-text)"
+      />
+    </>
+  )}
 </svg>
 <style>
-  .service-diagram { width: 100%; color: #777; justify-self: center; overflow: visible; }
-  .diagram__signal, .diagram__completion { color: var(--color-accent-text); }
-  .diagram__response { opacity: 0; }
+  .service-diagram {
+    width: 100%;
+    color: #777;
+    justify-self: center;
+    overflow: visible;
+  }
+  .diagram__signal,
+  .diagram__completion {
+    color: var(--color-accent-text);
+  }
+  .diagram__response {
+    opacity: 0;
+  }
 </style>

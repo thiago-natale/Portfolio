@@ -1,26 +1,112 @@
-.resume { position: relative; grid-template-columns: 38% 29% 1fr; gap: 4%; align-items: center; padding: clamp(32px, 5cqw, 65px) var(--gutter); border-bottom: 1px solid var(--color-line); }
-.resume__rule { position: absolute; inset: 0 var(--gutter) auto; height: 1px; background: var(--color-line); }
-.resume__label { font-size: clamp(10px, 1.4cqw, 14px); letter-spacing: .08em; color: var(--color-accent-text); margin-bottom: 12px; }
-.resume__title { font-family: var(--font-display); font-size: clamp(28px, 4.2cqw, 58px); line-height: 1.2; font-weight: 400; letter-spacing: -.02em; }
-.resume__description { color: var(--color-muted); font-size: clamp(12px, 1.65cqw, 17px); line-height: 1.55; max-width: 28ch; }
-.resume__access { min-width: 0; }
-.resume__document { gap: 12px; margin-bottom: 14px; }
-.resume__symbol { color: var(--color-accent-text); width: clamp(25px, 4cqw, 42px); height: auto; flex-shrink: 0; }
-.resume__metadata { font-size: clamp(8px, 1.05cqw, 11px); line-height: 1.7; letter-spacing: .025em; }
-.resume__metadata > span { color: var(--color-muted); font-size: .85em; }
-.resume__action { position: relative; min-height: 44px; gap: 12px; border-top: 1px solid var(--color-line); font-size: clamp(10px, 1.1cqw, 12px); letter-spacing: .035em; }
-.resume__action--view { color: var(--color-accent-text); }
-.resume__action--download { color: var(--color-muted); }
-.resume__action svg { width: 19px; height: 19px; stroke-width: 1.2; flex-shrink: 0; transition: color 180ms ease; }
-.resume__download-arrow { transition: transform 180ms ease; }
-.resume__action--download:is(:hover, :focus-visible) .resume__download-arrow { transform: translateY(2px); }
-.resume__action--view:is(:hover, :focus-visible) svg { color: var(--color-text); }
+.resume {
+  position: relative;
+  grid-template-columns: 38% 29% 1fr;
+  gap: 4%;
+  align-items: center;
+  padding: clamp(32px, 5cqw, 65px) var(--gutter);
+  border-bottom: 1px solid var(--color-line);
+}
+.resume__rule {
+  position: absolute;
+  inset: 0 var(--gutter) auto;
+  height: 1px;
+  background: var(--color-line);
+}
+.resume__label {
+  font-size: clamp(10px, 1.4cqw, 14px);
+  letter-spacing: 0.08em;
+  color: var(--color-accent-text);
+  margin-bottom: 12px;
+}
+.resume__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.2cqw, 58px);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.resume__description {
+  color: var(--color-muted);
+  font-size: clamp(12px, 1.65cqw, 17px);
+  line-height: 1.55;
+  max-width: 28ch;
+}
+.resume__access {
+  min-width: 0;
+}
+.resume__document {
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.resume__symbol {
+  color: var(--color-accent-text);
+  width: clamp(25px, 4cqw, 42px);
+  height: auto;
+  flex-shrink: 0;
+}
+.resume__metadata {
+  font-size: clamp(8px, 1.05cqw, 11px);
+  line-height: 1.7;
+  letter-spacing: 0.025em;
+}
+.resume__metadata > span {
+  color: var(--color-muted);
+  font-size: 0.85em;
+}
+.resume__action {
+  position: relative;
+  min-height: 44px;
+  gap: 12px;
+  border-top: 1px solid var(--color-line);
+  font-size: clamp(10px, 1.1cqw, 12px);
+  letter-spacing: 0.035em;
+}
+.resume__action--view {
+  color: var(--color-accent-text);
+}
+.resume__action--download {
+  color: var(--color-muted);
+}
+.resume__action svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.2;
+  flex-shrink: 0;
+  transition: color 180ms ease;
+}
+.resume__download-arrow {
+  transition: transform 180ms ease;
+}
+.resume__action--download:is(:hover, :focus-visible) .resume__download-arrow {
+  transform: translateY(2px);
+}
+.resume__action--view:is(:hover, :focus-visible) svg {
+  color: var(--color-text);
+}
 @media (max-width: 599px) {
-  .resume { grid-template-columns: 1fr; gap: 20px; padding-block: 32px; }
-  .resume__title { font-size: clamp(30px, 8.5vw, 44px); }
-  .resume__description { font-size: 14px; max-width: 34ch; }
-  .resume__document { margin-bottom: 10px; }
-  .resume__symbol { width: 30px; }
-  .resume__metadata { font-size: 11px; }
-  .resume__action { font-size: 12px; min-height: 48px; }
+  .resume {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 32px;
+  }
+  .resume__title {
+    font-size: clamp(30px, 8.5vw, 44px);
+  }
+  .resume__description {
+    font-size: 14px;
+    max-width: 34ch;
+  }
+  .resume__document {
+    margin-bottom: 10px;
+  }
+  .resume__symbol {
+    width: 30px;
+  }
+  .resume__metadata {
+    font-size: 11px;
+  }
+  .resume__action {
+    font-size: 12px;
+    min-height: 48px;
+  }
 }
